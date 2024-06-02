@@ -4,6 +4,8 @@ import cors from 'cors';
 
 import { env } from './utils/env.js';
 
+import { getAllContacts, getContactsById } from './services/students.js';
+
 const PORT = Number(env('PORT', '3000'));
 
 export const setupServer = () => {
@@ -20,9 +22,23 @@ export const setupServer = () => {
     }),
   );
 
-  app.get('/', (req, res) => {
-    res.json({
-      message: 'Hello world!',
+  app.get('/contacts', async (req, res) => {
+    const contacts = await getAllContacts();
+
+    res.status(200).json({
+      status: 'success',
+      data: contacts,
+      message: 'Successfully found contacts!',
+    });
+  });
+
+  app.get('/contacts/:contactId', async (req, res) => {
+    const { contactId } = req.params;
+    const contact = await getContactsById(contactId);
+
+    res.status(200).json({
+      data: contact,
+      message: 'Successfully found contact with id {contactId}!',
     });
   });
 
