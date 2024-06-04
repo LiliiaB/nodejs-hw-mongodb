@@ -1,3 +1,4 @@
+
 import { Router } from 'express';
 import { getAllContacts, getContactsById } from './services/contacts.js';
 
@@ -35,4 +36,3 @@ router.get('/contacts/:contactId', async (req, res, next) => {
   }
 });
 
-export default router;
