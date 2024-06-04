@@ -4,39 +4,39 @@ import cors from 'cors';
 
 import { env } from './utils/env.js';
 
-
 import contactsRouter from './routers/contacts.js';
 
-import { getAllContacts, getContactsById } from './services/contacts.js';
-import notFoundMiddleware from './middlewares/notFoundHandler.js';
-import errorHandlerMiddleware from './middlewares/errorHandler.js';
- hw3-crud
-  app.use(contactsRouter);
+import notFoundHandler from './middlewares/notFoundHandler.js';
+import errorHandler from './middlewares/errorHandler.js';
 
+const PORT = Number(env('PORT', '3000'));
+export const setupServer = () => {
+  const app = express();
 
-  app.get('/contacts', async (req, res, next) => {
-    try {
-      const contacts = await getAllContacts();
-      res.status(200).json({
-        status: 200,
-        data: contacts,
-        message: 'Successfully found contacts!',
-      });
-    } catch (error) {
-      next(error);
-    }
+  app.use(express.json());
+  app.use(cors());
+
+  app.use(
+    pino({
+      transport: {
+        target: 'pino-pretty',
+      },
+    }),
+  );
+
+  app.get('/', (req, res) => {
+    res.json({
+      message: 'Hello World!',
+    });
   });
 
-  app.get('/contacts/:contactId', async (req, res, next) => {
-    try {
-      const { contactId } = req.params;
-      const contact = await getContactsById(contactId);
+  app.use(contactsRouter);
 
-      if (!contact) {
-        return res.status(404).json({
-          status: 404,
-          message: `Contact with id ${contactId} not found!`,
-        });
-      }
+  app.use('*', notFoundHandler);
 
+  app.use(errorHandler);
 
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+};
