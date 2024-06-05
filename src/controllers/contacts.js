@@ -1,4 +1,10 @@
-import { getAllContacts, getContactsById } from '../services/contacts';
+import {
+  createContact,
+  getAllContacts,
+  getContactsById,
+} from '../services/contacts.js';
+
+import createHttpError from 'http-errors';
 
 export const getAllContactsController = async (req, res) => {
   const contacts = await getAllContacts();
@@ -11,23 +17,50 @@ export const getAllContactsController = async (req, res) => {
 };
 
 export const getContactsByIdController = async (req, res, next) => {
-  try {
-    const { contactId } = req.params;
-    const contact = await getContactsById(contactId);
+  const { contactId } = req.params;
+  const contact = await getContactsById(contactId);
 
-    if (!contact) {
-      return res.status(404).json({
-        status: 404,
-        message: `Contact with id ${contactId} not found!`,
+  if (!contact) {
+    next(createHttpError(404, `Contact with id ${contactId} not found`));
+    return;
+  }
+
+  res.status(200).json({
+    status: 200,
+    data: contact,
+    message: `Successfully found contact with id ${contactId}!`,
+  });
+};
+
+export const createContactController = async (req, res) => {
+  try {
+    const { name, phoneNumber, email, isFavourite, contactType } = req.body;
+
+    if (!name || !phoneNumber) {
+      return res.status(400).json({
+        status: 'error',
+        message: 'Name and phone number are required.',
       });
     }
 
-    res.status(200).json({
-      status: 200,
-      data: contact,
-      message: `Successfully found contact with id ${contactId}!`,
+    const newContact = await createContact({
+      name,
+      phoneNumber,
+      email,
+      isFavourite,
+      contactType,
+    });
+
+    res.status(201).json({
+      status: 201,
+      data: newContact,
+      message: 'Successfully created a contact!',
     });
   } catch (error) {
-    next(error);
+    res.status(500).json({
+      status: 'error',
+      message: 'Error creating contact',
+      error: error.message,
+    });
   }
 };
