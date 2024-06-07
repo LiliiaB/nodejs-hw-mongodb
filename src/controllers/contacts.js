@@ -33,34 +33,23 @@ export const getContactsByIdController = async (req, res, next) => {
 };
 
 export const createContactController = async (req, res) => {
-  try {
-    const { name, phoneNumber, email, isFavourite, contactType } = req.body;
+  const newContact = await createContact(req.body);
+  res.status(201).json({
+    status: 201,
+    message: `Successfully created new contact"`,
+    data: newContact,
+  });
+};
 
-    if (!name || !phoneNumber) {
-      return res.status(400).json({
-        status: 'error',
-        message: 'Name and phone number are required.',
-      });
-    }
+export const deleteContactController = async (req, res, next) => {
+  const { contactId } = req.params;
 
-    const newContact = await createContact({
-      name,
-      phoneNumber,
-      email,
-      isFavourite,
-      contactType,
-    });
+  const contact = await deleteContact(contactId);
 
-    res.status(201).json({
-      status: 201,
-      data: newContact,
-      message: 'Successfully created a contact!',
-    });
-  } catch (error) {
-    res.status(500).json({
-      status: 'error',
-      message: 'Error creating contact',
-      error: error.message,
-    });
+  if (!contact) {
+    next(createHttpError(404, 'Contact not found'));
+    return;
   }
+
+  res.status(204).send();
 };
