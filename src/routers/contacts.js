@@ -28,10 +28,12 @@ router.post(
 
 router.delete('/contacts/:contactId', ctrlWrapper(deleteContactController));
 
+
 router.patch(
   '/contacts/:contactId',
   validateBody(updateContactSchema),
   ctrlWrapper(patchContactController),
 );
+
 
 export default router;
