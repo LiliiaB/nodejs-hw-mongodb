@@ -14,4 +14,4 @@ export const updateContactSchema = Joi.object({
   phoneNumber: Joi.string().min(3).max(20),
   isFavourite: Joi.boolean(),
   contactType: Joi.string().valid('work', 'home', 'personal'),
-}).or('name', 'email', 'phoneNumber', 'isFavourite', 'contactType');
+});
