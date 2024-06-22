@@ -7,7 +7,7 @@ import { refreshUsersSession } from '../services/auth.js';
 export const registerUserController = async (req, res) => {
   const user = await registerUser(req.body);
 
-  res.json({
+  res.status(201).json({
     status: 201,
     message: 'Successfully registered a user!',
     data: user,
@@ -58,6 +58,12 @@ const setupSession = (res, session) => {
 };
 
 export const refreshUserSessionController = async (req, res) => {
+  if (!req.cookies.sessionId || !req.cookies.refreshToken) {
+    return res.status(400).json({
+      status: 400,
+      message: 'Session ID or Refresh Token not provided',
+    });
+  }
   const session = await refreshUsersSession({
     sessionId: req.cookies.sessionId,
     refreshToken: req.cookies.refreshToken,
