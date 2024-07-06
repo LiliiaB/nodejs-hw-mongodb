@@ -14,7 +14,7 @@
       "url": "http://localhost:3000"
     },
     {
-      "url":
+      "url": "http://localhost:3000"
     }
   ],
   "tags": [
@@ -24,7 +24,7 @@
     },
     {
       "name": "Auth",
-      "description": "AUser authorization"
+      "description": "User authorization"
     }
   ],
   "paths": {
@@ -181,12 +181,10 @@
                 "required": [
                   "name",
                   "phoneNumber",
-                  "email",
                   "isFavourite",
                   "contactType",
                   "updatedAt",
-                  "createdAt",
-                  "userId"
+                  "createdAt"
                 ],
                 "properties": {
                   "name": {
@@ -211,16 +209,16 @@
                     "example": true
                   },
                   "createdAt": {
-                    "description": "When was created",
+                    "description": "Date/time of contact creation",
                     "type": "string",
                     "format": "date-time",
-                    "example": "2024-06-06T17:48:14.102Z"
+                    "example": "2024-07-06T19:29:06.639Z"
                   },
                   "updatedAt": {
-                    "description": "When was updated",
+                    "description": "Date/time of contact update",
                     "type": "string",
                     "format": "date-time",
-                    "example": "2024-06-06T17:48:14.102Z"
+                    "example": "2024-07-06T19:29:06.639Z"
                   },
                   "contactType": {
                     "description": "Contact's type",
@@ -288,7 +286,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "65ca67e7ae7f10c88b598384"
+              "example": "6675c7696b0e4bf1f8e3f1aa"
             }
           }
         ],
@@ -307,7 +305,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Successfully found student with id 65ca67e7ae7f10c88b598384!"
+                      "example": "Successfully found student with id 6675c7696b0e4bf1f8e3f1aa!"
                     },
                     "data": {
                       "type": "object",
@@ -340,7 +338,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "65ca67e7ae7f10c88b598384"
+              "example": "6675c7696b0e4bf1f8e3f1aa"
             },
             "content": {
               "application/json": {
@@ -372,7 +370,7 @@
                     "updatedAt": {
                       "type": "string",
                       "format": "date-time",
-                      "example": "2024-06-06T17:48:14.102Z"
+                      "example": "2024-07-06T19:29:06.639Z"
                     },
                     "photo": {
                       "type": "string",
@@ -452,7 +450,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "65ca67e7ae7f10c88b598384"
+              "example": "6675c7696b0e4bf1f8e3f1aa"
             }
           }
         ],
@@ -519,12 +517,10 @@
         "required": [
           "name",
           "phoneNumber",
-          "email",
           "isFavourite",
           "contactType",
           "updatedAt",
-          "createdAt",
-          "userId"
+          "createdAt"
         ],
         "properties": {
           "name": {
@@ -551,14 +547,14 @@
           "createdAt": {
             "type": "string",
             "format": "date-time",
-            "description": "When was created",
-            "example": "2024-06-06T17:48:14.102Z"
+            "description": "Date/time of contact creation",
+            "example": "2024-07-06T19:29:06.639Z"
           },
           "updatedAt": {
             "type": "string",
             "format": "date-time",
-            "description": "When was updated",
-            "example": "2024-06-06T17:48:14.102Z"
+            "description": "Date/time of contact update",
+            "example": "2024-07-06T19:29:06.639Z"
           },
           "contactType": {
             "type": "string",
@@ -569,12 +565,12 @@
           "userId": {
             "type": "string",
             "description": "ID of the user who created the contact",
-            "example": "60d21b4667d0d8992e610c85"
+            "example": "66675c7696b0e4bf1f8e3f1aa"
           },
           "photo": {
             "type": "string",
             "format": "binary",
-            "description": "https://res.cloudinary.com/uqwgdu/image/upload/image.png"
+            "description": "https://res.cloudinary.com/dhnmradx7/image/upload/v1720294145/hrzgcpcyw8idmsbpuh1c.png"
           }
         }
       }
