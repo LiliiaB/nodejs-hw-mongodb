@@ -11,7 +11,7 @@ parameters:
     required: true
     schema:
       type: string
-      example: '65ca67e7ae7f10c88b598384'
+      example: '6675c7696b0e4bf1f8e3f1aa'
     content:
       application/json:
         schema:
@@ -40,7 +40,7 @@ parameters:
             updatedAt:
               type: string
               format: date-time
-              example: '2024-06-06T17:48:14.102Z'
+              example: '2024-07-06T19:29:06.639Z'
             photo:
               type: string
               format: binary
