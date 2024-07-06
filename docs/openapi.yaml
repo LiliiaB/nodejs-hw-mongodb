@@ -9,9 +9,9 @@ info:
     APP FOR STORING CONTACTS
 tags:
   - name: Contacts
-  description: adding/deleting/patching contacts
+    description: adding/deleting/patching contacts
   - name: Auth
-  description: User authorization
+    description: User authorization
 servers:
   - url: http://localhost:3000
   - url: #посилання на задеплоєний сайт
