@@ -14,7 +14,7 @@ tags:
     description: User authorization
 servers:
   - url: http://localhost:3000
-  - url: #посилання на задеплоєний сайт
+  - url: https://nodejs-hw-mongodb-5-isl5.onrender.com
 paths:
   /contacts:
     get:
