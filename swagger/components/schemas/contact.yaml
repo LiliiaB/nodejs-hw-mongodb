@@ -2,10 +2,6 @@ type: object
 required:
   - name
   - phoneNumber
-  - isFavourite
-  - contactType
-  - updatedAt
-  - createdAt
 properties:
   name:
     type: string
