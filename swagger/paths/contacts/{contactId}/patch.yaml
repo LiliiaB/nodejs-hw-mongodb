@@ -12,38 +12,40 @@ parameters:
     schema:
       type: string
       example: '6675c7696b0e4bf1f8e3f1aa'
-    content:
-      application/json:
-        schema:
-          type: object
-          properties:
-            name:
-              type: string
-              example: John Doe
-            phoneNumber:
-              type: string
-              example: '+380000000007'
-            email:
-              type: string
-              format: email
-              example: john.doe@example.com
-            isFavourite:
-              type: boolean
-              example: true
-            contactType:
-              type: string
-              enum:
-                - work
-                - home
-                - personal
-              example: work
-            updatedAt:
-              type: string
-              format: date-time
-              example: '2024-07-06T19:29:06.639Z'
-            photo:
-              type: string
-              format: binary
+requestBody:
+  required: false
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        properties:
+          name:
+            type: string
+            example: John Doe
+          phoneNumber:
+            type: string
+            example: '+380000000007'
+          email:
+            type: string
+            format: email
+            example: john.doe@example.com
+          isFavourite:
+            type: boolean
+            example: true
+          contactType:
+            type: string
+            enum:
+              - work
+              - home
+              - personal
+            example: work
+          updatedAt:
+            type: string
+            format: date-time
+            example: '2024-07-06T19:29:06.639Z'
+          photo:
+            type: string
+            format: binary
 responses:
   '200':
     description: Contact updated successfully
