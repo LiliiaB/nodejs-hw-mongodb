@@ -39,10 +39,6 @@ requestBody:
               - home
               - personal
             example: work
-          updatedAt:
-            type: string
-            format: date-time
-            example: '2024-07-06T19:29:06.639Z'
           photo:
             type: string
             format: binary
