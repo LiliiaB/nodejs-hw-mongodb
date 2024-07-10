@@ -31,16 +31,6 @@ requestBody:
             description: 'Contact is favourite or not'
             type: boolean
             example: true
-          createdAt:
-            description: 'Date/time of contact creation'
-            type: string
-            format: date-time
-            example: '2024-07-06T19:29:06.639Z'
-          updatedAt:
-            description: 'Date/time of contact update'
-            type: string
-            format: date-time
-            example: '2024-07-06T19:29:06.639Z'
           contactType:
             description: 'Contact type'
             type: string
